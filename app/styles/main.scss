@@ -1,0 +1,104 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+// endbower
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.table{
+  td{
+    height:50px;
+    vertical-align: middle;
+    position: relative;
+    &:first-child{
+      width:80%;
+      .txt{
+        left:-7px;
+      }
+    }
+  }
+  .txt{
+    cursor: pointer;
+    position: absolute;
+    &:hover{
+      text-decoration: underline;;
+    }
+  }
+  input{
+    position: absolute;
+    width:90%;
+    left:0;
+  }
+}
+
+barchart{
+  display: block;
+}
+
+.bar {
+  fill: steelblue;
+  &:hover{
+    fill : brown;
+  }
+}
+
+
+.axis {
+  font: 10px sans-serif;
+  path, line{
+    fill : none;
+    stroke : #000;
+    shape-rendering : crispEdges;
+  }
+}
+
+// .x.axis path {
+//   display: none;
+// }
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

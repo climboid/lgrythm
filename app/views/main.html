@@ -1,0 +1,53 @@
+
+    <div class="alert alert-danger" role="alert" ng-bind="alertMsg" ng-if="alertMsg"></div>
+    <form role="form">
+      <label>Name</label>
+      <input type="text" class="form-control" ng-change="alertMsg = ''" ng-model="studentName" placeholder="Enter students name" max="200"/>
+      <br>
+      <label>Grade (0-100)</label>
+      <input type="number" class="form-control" ng-change="alertMsg = ''" ng-model="studentGrade" placeholder="Enter students grade" max="100"/>
+      <br>
+      <button class="btn btn-default" type="submit" ng-click="submitForm()">Submit</button>
+    </form>
+
+<hr>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="student in students" ng-class="student.grade < 65 ? 'danger' : ''">
+      <td>
+        <div ng-if="!student.isNameEditable" ng-bind="student.name" ng-click="student.isNameEditable = !student.isNameEditable" class="txt col-xs-4"></div>
+        <div class="col-xs-8">
+          <input type="text" ng-model="student.name" class="form-control" ng-if="student.isNameEditable" ng-blur="triggerBlur(student, 'isNameEditable')" ng-keypress="findKey(student, 'isNameEditable')"/>
+        </div>
+      </td>
+      <td >
+        <span ng-if="!student.isGradeEditable" ng-bind="student.grade" ng-click="student.isGradeEditable = !student.isGradeEditable" class="txt"></span>
+        <input type="number" ng-model="student.grade" class="form-control input-sm" ng-if="student.isGradeEditable" ng-blur="triggerBlur(student, 'isGradeEditable')" ng-keypress="findKey(student, 'isGradeEditable')" max="100"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-xs-4 text-center">
+    <h2>Min</h2>
+    {{getMinScore() | number:0}}
+  </div>
+  <div class="col-xs-4 text-center">
+    <h2>Max</h2>
+    {{getMaxScore() | number:0}}
+  </div>
+  <div class="col-xs-4 text-center">
+    <h2>Avg</h2>
+    {{getAverage() | number:0}}
+  </div>
+</div>
+
+<barchart></barchart>
