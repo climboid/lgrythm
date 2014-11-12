@@ -107,7 +107,7 @@ angular.module('logRythmTestApp')
     };
 
     $scope.findKey = function (student, field) {
-      if (event.which === 13) {
+      if (event.which === 13 && student.grade <= 100) {
         student[field] = false;
         localStorageService.set('students', $scope.students);
       }
